@@ -1,0 +1,6 @@
+
+
+#define ZOOM_NOT_STARTED	0
+#define ZOOM_REFINING		1
+#define ZOOM_LOCAL_READY	2
+#define ZOOM_ALL_DONE		3

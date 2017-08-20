@@ -1,0 +1,202 @@
+Gravity_potentialListOfBlocks.F90:  call Cosmology_getOldRedshift(oldRedshift)
+Gravity_potentialListOfBlocks.F90:  call Cosmology_getRedshift(redshift)
+Gravity_potentialListOfBlocks.F90:     call Driver_abortFlash("shouldn't be here right now")
+Gravity_potentialListOfBlocks.F90:        call Grid_getBlkPtr(blocklist(lb), solnVec)
+Gravity_potentialListOfBlocks.F90:        call Grid_getBlkPtr(blocklist(lb), solnVec)
+Gravity_potentialListOfBlocks.F90:     call Grid_getBlkPtr(blocklist(lb), solnVec)
+Gravity_potentialListOfBlocks.F90:  call Grid_notifySolnDataUpdate( (/newPotVar/) )
+Gravity_potentialListOfBlocks.F90:        call Grid_releaseBlkPtr(blocklist(lb), solnVec)
+Gravity_potentialListOfBlocks.F90:        call Grid_releaseBlkPtr(blocklist(lb), solnVec)
+Gravity_potentialListOfBlocks.F90:     call Grid_releaseBlkPtr(blocklist(lb), solnVec)
+Gravity_potentialListOfBlocks.F90:  call Grid_solvePoisson (newPotVar, density, bcTypes, bcValues, &
+Gravity_potentialListOfBlocks.F90:  call MPI_Barrier (grv_meshComm, ierr)
+Gravity_potentialListOfBlocks.F90:  call MPI_Barrier (grv_meshComm, ierr)
+Gravity_potentialListOfBlocks.F90:    call Particles_sinkAccelGasOnSinksAndSinksOnGas()
+Gravity_potentialListOfBlocks.F90:  call Particles_updateGridVar(MASS_PART_PROP, PDEN_VAR)
+Gravity_potentialListOfBlocks.F90:     call SmoothParticleDensity(PDE_VAR)
+Gravity_potentialListOfBlocks.F90:  call Timers_start("gravity")
+Gravity_potentialListOfBlocks.F90:  call Timers_start("gravity Barrier")
+Gravity_potentialListOfBlocks.F90:  call Timers_stop ("gravity")
+Gravity_potentialListOfBlocks.F90:  call Timers_stop("gravity Barrier")
+Gravity_potentialListOfBlocks.F90:     if (density .NE. PDEN_VAR .and. density .NE. PDE_VAR) call Grid_notifySolnDataUpdate( (/density/) )
+Gravity_potentialListOfBlocks.F90:  if (.NOT. grav_unjunkPden) call Grid_notifySolnDataUpdate( (/PDEN_VAR/) )
+Gravity_potentialListOfBlocks.F90:     if (saveLastPot) call Grid_notifySolnDataUpdate( (/GPOL_VAR/) )
+Grid_mapMeshToParticles.F90:           call Driver_abortFlash("BLK_PART_PROP out of bounds")
+Grid_mapMeshToParticles.F90:           call Grid_getBlkBoundBox(currentBlk,bndBox)
+Grid_mapMeshToParticles.F90:     call Grid_getBlkBoundBox(currentBlk,bndBox)
+Grid_mapMeshToParticles.F90:     call Grid_getBlkPtr(currentBlk,solnVec,gDataStruct)
+Grid_mapMeshToParticles.F90:           call Grid_getBlkPtr(currentBlk,solnVec,gridDataStruct)
+Grid_mapMeshToParticles.F90:           call Grid_getDeltas(currentBlk,delta)
+Grid_mapMeshToParticles.F90:     call Grid_getDeltas(currentBlk,delta)
+Grid_mapMeshToParticles.F90:     call Grid_getLocalNumBlks(blkCount)
+Grid_mapMeshToParticles.F90:     call Grid_releaseBlkPtr(currentBlk,solnVec,gridDataStruct)
+Grid_mapMeshToParticles.F90:           call Grid_releaseBlkPtr(prevBlk,solnVec,gridDataStruct)
+Grid_mapMeshToParticles.F90:        call Particles_mapFromMesh (mapType, numAttrib, attrib,&
+Particles_longRangeForce.F90:     call GetSmoothParticleAcceleration()
+Particles_longRangeForce.F90:  call Gravity_accelListOfBlocks(blockCount, blockList,IAXIS,GRAC_VAR)
+Particles_longRangeForce.F90:     call Gravity_accelListOfBlocks(blockCount,blockList,JAXIS,GRAC_VAR)
+Particles_longRangeForce.F90:     call Gravity_accelListOfBlocks(blockCount,blockList,KAXIS,GRAC_VAR)
+Particles_longRangeForce.F90:  call Grid_getListOfBlocks(LEAF,blockList,blockCount)
+Particles_longRangeForce.F90:     call Grid_mapMeshToParticles(particles,part_props, BLK_PART_PROP,&
+Particles_longRangeForce.F90:     call Grid_mapMeshToParticles(particles,part_props, BLK_PART_PROP,&
+Particles_longRangeForce.F90:  call Grid_mapMeshToParticles(particles,part_props, BLK_PART_PROP,&
+Particles_longRangeForce.F90:  call Grid_mapMeshToParticles(particles,part_props, BLK_PART_PROP,&
+smooth_fillGuardCells.F90:  call amr_guardcell(gr_meshMe, 2, NGUARD, layers(IAXIS), layers(JAXIS), layers(KAXIS))
+smooth_fillGuardCells.F90:     call Grid_getBlkPtr(lb,solnData)
+smooth_fillGuardCells.F90:     call Grid_releaseBlkPtr(lb,solnData)
+smooth_fillGuardCells.F90:  call gr_setGcFillNLayers(layers,ALLDIR,NGUARD,minLayers=NGUARD)
+smooth_Init.F90:  call Driver_getMype(GLOBAL_COMM, smooth_mype)
+smooth_Init.F90:  call RuntimeParameters_get("lrefine_smooth_max", lrefine_smooth_max)
+smooth_Init.F90:  call RuntimeParameters_get("lrefine_smooth_min", lrefine_smooth_min)
+smooth_Init.F90:  call RuntimeParameters_get("max_num_smooth_part", max_num_smooth_part)
+smooth_Init.F90:  call RuntimeParameters_get("SmoothParticles", SmoothParticles)
+smooth_Init.F90:  call RuntimeParameters_get("smooth_radius_factor", smooth_radius_factor)
+Smooth_particles.F90:             call abort(1)
+Smooth_particles.F90:      call amr_mg_init()
+Smooth_particles.F90:                call CreateSingleSmoothParticle(particles(:,i),NPART_PROPS,lrefine_smooth,i)
+Smooth_particles.F90:      call CreateSmoothParticles()
+Smooth_particles.F90:      call CreateSmoothParticles()
+Smooth_particles.F90:         call current_date_time(time_string)
+Smooth_particles.F90:         call current_date_time(time_string)
+Smooth_particles.F90:         call current_date_time(time_string)
+Smooth_particles.F90:         call current_date_time(time_string)
+Smooth_particles.F90:             call Driver_abortFlash("BLK_PART_PROP out of bounds")
+Smooth_particles.F90:                call Driver_abortFlash("parent ID of 0")
+Smooth_particles.F90:        call Driver_abortFlash("Severe error. Communication buffer too small!!!!")
+Smooth_particles.F90:        call Driver_abortFlash("Severe error. Memory cannot be allocated!")
+Smooth_particles.F90:        call Driver_abortFlash("Severe error. Memory cannot be allocated!")
+Smooth_particles.F90:     call Driver_abortFlash("Severe error. Memory cannot be allocated!")
+Smooth_particles.F90:          call Driver_abortFlash("smooth particle mapped to leaf block")
+Smooth_particles.F90:          call Driver_abortFlash("smooth particle not on proper refinement level")
+Smooth_particles.F90:          call Driver_abortFlash("smooth particle on NONEXISTENT block")
+Smooth_particles.F90:           call Driver_abortFlash("smooth_verifyParticleLocations: particle in wrong location!")
+Smooth_particles.F90:             call Driver_abortFlash("too many particles in smooth_localMatch")
+Smooth_particles.F90:          call Driver_abortFlash("TransferSmoothedAcceleration, problem with parent_id")
+Smooth_particles.F90:          call Driver_abortFlash("TransferSmoothedAcceleration, problem with parent_proc")
+Smooth_particles.F90:             call FindRefinementLevelDest(particles(MASS_PART_PROP,i), & 
+Smooth_particles.F90:      call Gravity_accelListOfBlocks(blockCount,blockList,IAXIS,GRAC_VAR)
+Smooth_particles.F90:      call Gravity_accelListOfBlocks(blockCount,blockList,JAXIS,GRAC_VAR)
+Smooth_particles.F90:      call Gravity_accelListOfBlocks(blockCount,blockList,KAXIS,GRAC_VAR)
+Smooth_particles.F90:  call gr_ensureValidNeighborInfo(10) ! We want valid grid information as after a guardcell-filling operation
+Smooth_particles.F90:      call gr_freeCommRecvBuffer()
+Smooth_particles.F90:      call gr_freeCommRecvBuffer()
+Smooth_particles.F90:      call gr_freeCommRecvBuffer()
+Smooth_particles.F90:      call gr_freeCommRecvBuffer()
+Smooth_particles.F90:             call Grid_getBlkBoundBox(blockID,bndBox)
+Smooth_particles.F90:        call Grid_getBlkBoundBox(blockID,bndBox)
+Smooth_particles.F90:       call Grid_getBlkBoundBox(blockID,bndBox)
+Smooth_particles.F90:             call Grid_getBlkBoundBox(currentBlk,bndBox)
+Smooth_particles.F90:       call Grid_getBlkBoundBox(currentBlk,bndBox)
+Smooth_particles.F90:     call Grid_getBlkIndexLimits(blockID, blkLimits, blkLimitsGC)
+Smooth_particles.F90:     call Grid_getBlkIndexLimits(blockID, blkLimits, blkLimitsGC)
+Smooth_particles.F90:  call Grid_getBlkIndexLimits(blockID,blkLimits, blkLimitsGC)
+Smooth_particles.F90:     call Grid_getBlkPhysicalSize(blockID,size)
+Smooth_particles.F90:     call Grid_getBlkPhysicalSize(blockID,size)
+Smooth_particles.F90:     call Grid_getBlkPtr(blockID,solnData)
+Smooth_particles.F90:     call Grid_getBlkPtr(blockID,solnData)
+Smooth_particles.F90:        call Grid_getBlkPtr(blockID,solnVec,CENTER)
+Smooth_particles.F90:       call Grid_getBlkPtr(currentBlk,solnVec,gDataStruct)
+Smooth_particles.F90:             call Grid_getBlkPtr(currentBlk,solnVec,gridDataStruct)
+Smooth_particles.F90:     call Grid_getBlkPtr(gr_ptblkList(blkNo),solnVec,CENTER)
+Smooth_particles.F90:        call Grid_getDeltas(blockID,deltas)
+Smooth_particles.F90:             call Grid_getDeltas(currentBlk,delta)
+Smooth_particles.F90:       call Grid_getDeltas(currentBlk,delta)
+Smooth_particles.F90:      call Grid_getListOfBlocks(ALL_BLKS,blockList,blockCount)
+Smooth_particles.F90:  call Grid_getListOfBlocks(ALL_BLKS,blockList,blockCount)
+Smooth_particles.F90:    call Grid_getListOfBlocks(ALL_BLKS,smooth_blkList,smooth_blkCount)
+Smooth_particles.F90:  call Grid_getListOfBlocks(blocks,blockList,blockCount)
+Smooth_particles.F90:     call Grid_getListOfBlocks(LEAF,gr_ptBlkList,gr_ptBlkCount)
+Smooth_particles.F90:     call Grid_getListOfBlocks(REFINEMENT,gr_ptBlkList,gr_ptBlkCount,refinementLevel=mapLevel)
+Smooth_particles.F90:       call Grid_getLocalNumBlks(blkCount)
+Smooth_particles.F90:      call Grid_mapMeshToParticles(particles(:,1:pt_numlocal),NPART_PROPS,BLK_PART_PROP,& 
+Smooth_particles.F90:      call Grid_mapMeshToParticles(particles_smooth(:,1:num_smooth),num_smooth_part_props,blk_coarse,&
+Smooth_particles.F90:      call Grid_mapMeshToParticles(particles_smooth(:,1:num_smooth),num_smooth_part_props,blk_coarse,&
+Smooth_particles.F90:      call Grid_mapMeshToParticles(particles_smooth(:,1:num_smooth),num_smooth_part_props,blk_coarse,&
+Smooth_particles.F90:             call Grid_outsideBoundBox(pos,bndBox,outside,Negh)
+Smooth_particles.F90:     call Grid_releaseBlkPtr(blockID, solnData)
+Smooth_particles.F90:     call Grid_releaseBlkPtr(blockID, solnData)
+Smooth_particles.F90:        call Grid_releaseBlkPtr(blockID,solnVec,CENTER)
+Smooth_particles.F90:       call Grid_releaseBlkPtr(currentBlk,solnVec,gridDataStruct)
+Smooth_particles.F90:     call Grid_releaseBlkPtr(gr_ptblkList(blkNo),solnVec,CENTER)
+Smooth_particles.F90:             call Grid_releaseBlkPtr(prevBlk,solnVec,gridDataStruct)
+Smooth_particles.F90:  call Grid_sortParticles(particles, part_props, localNumParticles, &
+Smooth_particles.F90:        call gr_ptApplyBCsOneBlk(blkLimits,blkLimitsGC,blockID)
+Smooth_particles.F90:     call gr_ptMoveMappedData(varGrid,BufferSize,sendBuf,sendCount,recvBuf)
+Smooth_particles.F90:       call gr_ptNextProcPair(timesInLoop, src, dest, stillProcessing, mustCommunicate)
+Smooth_particles.F90:                          call gr_ptOffProcMap(srcCoords,destCoords,BufferSize,&
+Smooth_particles.F90:    call gr_ptResetProcPair(stillProcessing,mustCommunicate)
+Smooth_particles.F90:                          call gr_ptSameProcMap(srcCoords,destCoords,negh,varGrid)
+Smooth_particles.F90:     call gr_ptStoreOffBlockCells(particlesPerBlk, gr_ptBlkList, gr_ptBlkCount, &
+Smooth_particles.F90:      call MoveSmoothParticles(particles_smooth, num_smooth_part_props, &
+Smooth_particles.F90:      call MoveSmoothParticles(particles_smooth,num_smooth_part_props, &
+Smooth_particles.F90:      call MPI_ALLREDUCE(localCount,globalCount,1,FLASH_INTEGER,MPI_SUM,gr_meshComm,ierr)
+Smooth_particles.F90:      call MPI_ALLREDUCE(localCount,globalCount,1,FLASH_INTEGER,MPI_SUM,gr_meshComm,ierr)
+Smooth_particles.F90:      call mpi_allreduce(lower_lrefine, lower_lrefine_global, 1, MPI_INTEGER, &
+Smooth_particles.F90:      call mpi_allreduce(lower_lrefine, lower_lrefine_global, 1, MPI_INTEGER, &
+Smooth_particles.F90:  call MPI_ALLREDUCE(mass_del,mass_del_global,1,FLASH_REAL,MPI_SUM,MPI_COMM_WORLD,ierr) 
+Smooth_particles.F90:  call MPI_ALLREDUCE(mass_dm,mass_dm_global,1,FLASH_REAL,MPI_SUM,MPI_COMM_WORLD,ierr) 
+Smooth_particles.F90:  call MPI_ALLREDUCE(mass,totMass,1,FLASH_REAL,MPI_SUM,MPI_COMM_WORLD,ierr) 
+Smooth_particles.F90:         call MPI_ALLREDUCE(num_smooth,globalCount,1,FLASH_INTEGER,MPI_SUM,MPI_COMM_WORLD,ierr) 
+Smooth_particles.F90:       call MPI_ALLREDUCE(num_smooth,num_smooth_global,1,FLASH_INTEGER,MPI_SUM,MPI_COMM_WORLD,ierr) 
+Smooth_particles.F90:  call MPI_ALLREDUCE(part_mass_dm,part_mass_dm_global,1,FLASH_REAL,MPI_SUM,MPI_COMM_WORLD,ierr) 
+Smooth_particles.F90:              call MPI_ALLREDUCE(part_mass_smooth,part_mass_smooth_global,1,FLASH_REAL,MPI_SUM,MPI_COMM_WORLD,ierr) 
+Smooth_particles.F90:         call MPI_ALLREDUCE(part_mass_smooth,part_mass_smooth_global,1,FLASH_REAL,MPI_SUM,MPI_COMM_WORLD,ierr) 
+Smooth_particles.F90:    call MPI_ALLREDUCE(perProc,maxCount,gr_meshNumProcs,FLASH_INTEGER,MPI_MAX,gr_meshComm,ierr)
+Smooth_particles.F90:    call MPI_ALLREDUCE(toProcs,fromProcs,gr_meshNumProcs,FLASH_INTEGER,MPI_SUM,gr_meshComm,ierr)
+Smooth_particles.F90:      call mpi_allreduce(upper_lrefine, upper_lrefine_global, 1, MPI_INTEGER, & 
+Smooth_particles.F90:          call MPI_GET_COUNT(status,FLASH_REAL,numSource,ierr)
+Smooth_particles.F90:          call MPI_IRECV(sourceBuf(1,j),bufSize,FLASH_REAL,&
+Smooth_particles.F90:          call MPI_SEND(destBuf(1,k),bufSize,FLASH_REAL,j,tag_for_data,gr_meshComm,ierr)
+Smooth_particles.F90:          call MPI_SENDRECV(destBuf(1,1), sendCount, FLASH_REAL, &
+Smooth_particles.F90:          call MPI_SENDRECV(destBuf(1,1), sendCount, FLASH_REAL, &
+Smooth_particles.F90:       call MPI_WAITALL(gettingFrom,req,status,ierr)
+Smooth_particles.F90:          call Particles_mapFromMesh (mapType, numAttrib, attrib,&
+Smooth_particles.F90:      call Particles_updateGridVar(MASS_PART_PROP,AUX_VAR)
+Smooth_particles.F90:              call pt_mapOneParticle(blkLimitsGC,intPos,particleAttributeValue, &
+Smooth_particles.F90:      call smooth_checkMassConservation(LEAF)
+Smooth_particles.F90:         call smooth_fillGuardCells(m, GPOT_VAR)
+Smooth_particles.F90:         call smooth_fillGuardCells(m, var)
+Smooth_particles.F90:         call smooth_findTotalMass(var,total_mass)
+Smooth_particles.F90:         call smooth_Init()
+Smooth_particles.F90:         call smooth_Init()
+Smooth_particles.F90:             call smooth_localMatch(dataBuf,localCount,propCount,maxCount,&
+Smooth_particles.F90:    call smooth_localMatch(dataBuf,m,propCount,maxCount,sourceBuf,localCount,&
+Smooth_particles.F90:         call smooth_mapParticlesToMesh(particles_smooth,num_smooth_part_props, &
+Smooth_particles.F90:    call smooth_moveSieve(dataBuf,localCount,propCount,&
+Smooth_particles.F90:         call smooth_prepareNodes(m, .false.)
+Smooth_particles.F90:         call smooth_prepareNodes(m, .true.)
+Smooth_particles.F90:         call smooth_prepareNodes(m, .true.)
+Smooth_particles.F90:         call smooth_Prolong(m, var, var, 2)
+Smooth_particles.F90:      call smooth_recordNodeTypeStates()
+Smooth_particles.F90:      call smooth_recordNodeTypeStates()
+Smooth_particles.F90:      call smooth_restoreNodeTypes(.false.)
+Smooth_particles.F90:      call smooth_restoreNodeTypes(.true.)
+Smooth_particles.F90:      call smooth_restoreParticleMasses()
+Smooth_particles.F90:      call smooth_restoreParticleMasses()
+Smooth_particles.F90:         call smooth_Restrict(m,GPOT_VAR,GPOT_VAR)
+Smooth_particles.F90:    call smooth_verifySmoothParticleLocations(dataBuf,propCount,localCount,maxCount)
+Smooth_particles.F90:      call TransferSmoothedAccelerations(particles(:,1:pt_numLocal),NPART_PROPS,pt_numLocal,&
+Smooth_particles.F90:    call ut_sortOnProcs(h,propCount_smooth,proc_og,gr_meshNumProcs,destBuf,sourceBuf,&
+smooth_prepareNodes.F90:     call amr_get_new_nodetypes(gr_meshNumProcs,gr_meshMe,level)
+smooth_prepareNodes.F90:     call amr_morton_process()
+smooth_Prolong.F90:     call Driver_abortFlash("smooth_Prolong: mapMode not supported")
+smooth_Prolong.F90:                call Driver_abortFlash("xiend, yiend, ziend aren't equal!")
+smooth_Prolong.F90:                call Driver_abortFlash("xoend, yoend, zoend aren't equal!")
+smooth_Prolong.F90:        call Grid_getCellCoords(IAXIS,b,CENTER,.true.,xb,GRID_IHI_GC)
+smooth_Prolong.F90:        call Grid_getCellCoords(JAXIS,b,CENTER,.true.,yb,GRID_JHI_GC)
+smooth_Prolong.F90:        call Grid_getCellCoords(KAXIS,b,CENTER,.true.,zb,GRID_KHI_GC)
+smooth_Prolong.F90:              call mpi_issend(send_prolong_data(1,1,1,c,h), nmax, &
+smooth_Prolong.F90:        call mpi_recv(recv_prolong_data(1,1,1), nmax, &
+smooth_Prolong.F90:  call mpi_waitall(nsent, send_prolong_req, send_status, ierr)
+smooth_Prolong.F90:           call umap3 (lxiend,lyiend,lziend,xiend,yiend,ziend,&
+smooth_Prolong.F90:        if(h .gt. nbuf_prolong) call Driver_abortFlash("Buffer space exceeded in smooth_Prolong")
+smooth_recordNodeTypeStates.F90:  call mpi_allreduce(mylrefmax, maxMeshRefineLevel, 1, MPI_INTEGER, & 
+smooth_recordNodeTypeStates.F90:  call mpi_allreduce(mylrefmin, minMeshRefineLevel, 1, MPI_INTEGER, &
+smooth_restoreNodeTypes.F90:     call amr_get_new_nodetypes (gr_meshNumProcs, gr_meshMe, maxMeshRefineLevel)
+smooth_restoreNodeTypes.F90:     call amr_morton_process()
+smooth_Restrict.F90:             call Driver_abortFlash("Buffer space exceeded in smooth_Restrict")
+smooth_Restrict.F90:                call Driver_abortFlash("[smooth_Restrict] could not find child block");
+smooth_Restrict.F90:           call mpi_issend(send_restrict_data(1,1,1,h), &
+smooth_Restrict.F90:              call mpi_recv(recv_restrict_data(1,1,1), &
+smooth_Restrict.F90:  call mpi_waitall(nsent, send_restrict_req, send_status, ierr)
+smooth_setMaxLevel.F90:  call amr_get_new_nodetypes(gr_meshNumProcs,gr_meshMe,level)

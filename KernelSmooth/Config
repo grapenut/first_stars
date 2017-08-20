@@ -1,0 +1,4 @@
+
+REQUIRES Particles/ParticlesMain
+
+PARTICLETYPE smooth INITMETHOD custom MAPMETHOD quadratic ADVMETHOD euler_tra

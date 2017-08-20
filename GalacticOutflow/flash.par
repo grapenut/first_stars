@@ -1,0 +1,221 @@
+
+
+run_comment                    =  "Galactic Outflow at redshift 10"
+basenm                         =  "outflow_"
+log_file                       =  "GalacticOutflow.log"
+restart                        =  .true.
+#restart                        =  .false.
+checkpointFileNumber           =  61
+checkpointFileIntervalStep     =  1
+
+dtinit                         =  1.0
+dtmin                          =  1.E0
+dtmax                          =  1.E15
+tmax                           =  1.E99
+
+zInitial                       =  10.0
+zFinal                         =  1.0
+
+nend                           =  99999
+
+
+
+#-------------------------------------------------------------------------------
+#  Particles
+
+useParticles = .true.
+pt_maxPerProc            =  1500000
+smearLen = 1
+
+
+
+#-----------------
+# Grid domain
+
+xmin                           =  0.
+xmax                           =  3.0856776e24
+ymin                           =  0.
+ymax                           =  3.0856776e24
+zmin                           =  0.
+zmax                           =  3.0856776e24
+
+nblockx                        =  1
+nblocky                        =  1
+nblockz                        =  1
+
+geometry                       =  "cartesian"
+
+xl_boundary_type               =  "periodic"
+xr_boundary_type               =  "periodic"
+yl_boundary_type               =  "periodic"
+yr_boundary_type               =  "periodic"
+zl_boundary_type               =  "periodic"
+zr_boundary_type               =  "periodic"
+
+
+
+#-----------------
+# Refinement
+
+nrefs			       =  1
+lrefine_max                    =  24
+lrefine_del		       =  0
+lrefine_min                    =  5
+
+# refinement criterion (2nd derivative)
+refine_var_1                   = "none"
+refine_filter_1                = 0.01
+derefine_cutoff_1              = 0.01
+refine_cutoff_1                = 0.95
+
+# this will cause too much refinement during runtime, so we disabled it
+refine_on_particle_count       = .false.
+gr_ptRefineOnPtMaxPerProc      = .false.
+
+
+
+#------------------
+# Simulation specific parameters
+
+
+# particle initialization files
+baryon_init_file = "z10baryon.txt"
+darkmatter_init_file = "z10darkmatter.txt"
+star_list_file	= "z10stars.txt"
+
+helium_abundance = 0.08	
+initial_metallicity = 1.0e-4
+
+starburst_radius = 3.0e19
+starburst_refine_level = 16
+galaxy_radius	= 9.0e21
+galaxy_refine_level = 9
+
+nova_yield	= 0.1
+nova_temp	= 1.0e4
+nova_particles	= 1.0e7
+nova_energy	= 1.0e51
+zoom_level_offset = 2
+
+# overdensity refinement
+useOverdensity = .true.
+useUnderdensity = .false.
+refine_level_offset		= -4.0
+phi                            = -0.3
+
+
+
+#------------------
+# PhotoChem
+
+useChem = .true.
+usePhoto = .true.
+
+# data files for cooling and photoeq
+flash_data_path = "/work/01468/grapenut/flash_data"
+photoeq_file = "z10photoeq_metallicity.txt"
+metal_cooling_file = "z10cooling_metallicity.txt"
+
+# pixel mapping
+phch_max_sources	= 1
+phch_num_sides		= 16
+phch_bin_min_radius	= 3.0e19
+phch_bin_max_radius	= 3.0e22
+phch_max_octree_level	= 4
+
+# default source parameters
+phch_default_source_x	= 1.5428388e24
+phch_default_source_y	= 1.5428388e24
+phch_default_source_z	= 1.5428388e24
+phch_default_photon_number	= 1.0e51
+
+
+
+#-----------------
+# DM smoothing (prolong_particles)
+
+SmoothParticles		= .true.
+lrefine_smooth_min	= 8
+lrefine_smooth_max	= 12
+max_num_smooth_part	= 100000
+smooth_radius_factor	= 0.3
+
+
+
+#-------------------------------------------------------------------------------
+#  checkpoint and plot control (effectively disabled parameters)
+
+wall_clock_checkpoint          =  3500000.
+
+checkpointFileIntervalZ        =  1000.
+checkpointFileIntervalTime     =  9.0e16
+
+plotFileIntervalZ              =  1000.0
+plotFileIntervalTime           =  1.0e99
+plotFileIntervalStep           =  50000
+
+plot_var_1 = "dens"
+plot_var_2 = "temp"
+plot_var_3 = "z"
+
+particleFileIntervalZ          =  1000.
+particleFileIntervalTime       =  1.E99
+particleFileIntervalStep       =  500
+
+
+
+#-------------------------------------------------------------------------------
+#  Hydrodynamics
+
+gamma                          =  1.66666666667
+#eintSwitch			= 1.0e-4
+cfl                            =  0.8
+cvisc                          =  0.1
+nriem                          =  25
+
+small                          =  1.0E-40
+smlrho                         =  1.0E-40
+smallp                         =  1.0E-40
+smalle                         =  1.E8
+smallt                         =  1.
+smallu                         =  1.0E-40
+smallx                         =  1.0E-40
+
+#monotone                       = .false.
+#convertToConsvdInMeshInterp    = .false.
+
+# apply gr_smalle and don't print anything
+gr_sanitizeDataMode = 3
+gr_sanitizeVerbosity = 0
+
+#-------------------------------------------------------------------------------
+#  Gravity
+
+igrav                          =  1
+grav_boundary_type             = "periodic"
+mg_maxResidualNorm             = 1.0E-6
+mg_printNorm                   = .true.
+
+
+
+#-------------------------------------------------------------------------------
+#  Cosmology
+
+OmegaMatter                    =  0.275       # matter dominated
+OmegaBaryon                    =  0.0458         
+HubbleConstant                 =  2.279e-18    # h = 0.704 (WMAP 7yr)
+CosmologicalConstant           =  0.725
+MaxScaleChange                 =  0.05
+
+
+ 
+#-------------------------------------------------------------------------------
+#  Simulation specific parameters:
+
+########################### Conservative Multi-Fluid Advection
+use_steepening = .false.
+use_cma_advection = .true.
+use_cma_steepening = .false.
+use_cma_flattening = .false.
+
+

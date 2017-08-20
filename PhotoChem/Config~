@@ -1,0 +1,82 @@
+###################
+## PhotoChem Configuration File
+
+## PhotoChem is a comprehensive photoionization and metal cooling module
+
+## We make use of the HealPIX algorithm (Gorski, NASA) to map FLASH AMR
+## to a spherical grid on which we calculate the ionizing flux.
+
+## We make use of the Cloudy radiative transfer code (Ferland 08) to 
+## tabulate ionization state and cooling rates which are interpolated
+## for the values mapped from the AMR grid to HealPIX.
+
+REQUIRES Grid
+REQUIRES Multispecies
+REQUIRES physics/Eos/EosMain
+
+
+####################
+
+
+PARAMETER usePhoto	BOOLEAN		false
+PARAMETER useChem	BOOLEAN		false
+
+
+## pixel mapping parameters
+PARAMETER phch_max_sources	INTEGER		1
+## num_pixels = 12 * num_sides * num_sides
+PARAMETER phch_num_sides		INTEGER		4 
+PARAMETER phch_bin_min_radius	REAL		1.0e15
+PARAMETER phch_bin_max_radius	REAL		1.4e20
+PARAMETER phch_max_octree_level	INTEGER		4
+
+
+## Some defaults to use for source properties.
+##
+## Use these flash.par parameters to quickly setup
+## a single source with fixed properties.
+##
+## In general, you should set the source xyz and photon
+## number manually if they are not constants.
+##  e.g. in phch_updateSources()
+
+PARAMETER phch_default_source_x	REAL		0.0
+PARAMETER phch_default_source_y	REAL		0.0
+PARAMETER phch_default_source_z	REAL		0.0
+PARAMETER phch_default_photon_number	REAL		1.0e50
+
+
+## Heating, Cooling and equilibrium chemistry
+PARAMETER flash_data_path		STRING	"/work/01468/grapenut/flash_data"
+PARAMETER photoeq_file			STRING	"photoeq.txt"
+PARAMETER metal_cooling_file		STRING	"metal_cooling.txt"
+
+
+## metal cooling scale factors
+PARAMETER phch_metal_abundance		REAL	0.002184
+PARAMETER phch_metallicity_factor	REAL	26.6414
+PARAMETER phch_average_metal_mass	REAL	17.1866
+
+
+## photoeq abundances
+PARAMETER helium_abundance		REAL	0.08
+PARAMETER carbon_abundance		REAL	1.0e-3
+PARAMETER oxygen_abundance		REAL	1.0e-3
+
+
+####################
+## grid variables
+
+VARIABLE FLUX
+VARIABLE CHEM
+
+SPECIES H
+SPECIES HPLU
+SPECIES HEL
+SPECIES HEP
+SPECIES HEPP
+SPECIES ELEC
+SPECIES Z
+
+
+

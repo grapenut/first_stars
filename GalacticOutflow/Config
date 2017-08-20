@@ -1,0 +1,65 @@
+# TenStars
+#   Simulate the explosion of a small cluster of Pop III stars in a
+#   cosmological minihalo.
+
+#LIBRARY mkl
+
+REQUIRES Driver/DriverMain/Unsplit
+REQUIRES Grid
+REQUIRES Grid/GridParticles/GridParticlesMapToMesh
+REQUIRES IO
+REQUIRES IO/IOParticles
+REQUIRES Multispecies
+REQUIRES Particles/ParticlesForces/longRange/gravity/ParticleMesh
+REQUIRES Particles/ParticlesMain/active
+REQUIRES Particles/ParticlesMain/active/massive/LeapfrogCosmo
+REQUIRES Particles/ParticlesMain/passive/Euler
+REQUIRES Particles/ParticlesMapping/meshWeighting/CIC
+REQUIRES Particles/ParticlesMapping/meshWeighting/MapToMesh
+REQUIRES Particles/ParticlesMapping/Quadratic
+REQUIRES physics/Cosmology
+REQUIRES physics/Eos/EosMain/Multigamma
+REQUIRES physics/Gravity
+REQUIRES physics/Gravity/GravityMain/Poisson/Multigrid
+REQUIRES physics/Hydro
+REQUIRES physics/Hydro/HydroMain/unsplit/Hydro_Unsplit
+
+REQUIRES flashUtilities/KernelSmooth
+REQUIRES flashUtilities/PhotoChem
+REQUIRES flashUtilities/prolong_particles
+
+#####################################
+
+PARTICLETYPE dark INITMETHOD custom MAPMETHOD quadratic ADVMETHOD leapfrog_cosmo
+PARTICLETYPE passive INITMETHOD custom MAPMETHOD quadratic ADVMETHOD euler_tra
+
+#####################################
+
+## particle initialization
+PARAMETER baryon_init_file	STRING	"z10baryon.txt"
+PARAMETER darkmatter_init_file	STRING	"z10darkmatter.txt"
+
+## gas initialization
+PARAMETER initial_metallicity	REAL	1.0e-6
+
+## starburst/galaxy
+PARAMETER star_list_file	STRING	"z10stars.txt" 
+PARAMETER starburst_radius	REAL	3.0e19
+PARAMETER starburst_refine_level	INTEGER	14
+PARAMETER galaxy_refine_level	INTEGER	7
+PARAMETER galaxy_radius		REAL	3.0e21
+
+## supernovae
+PARAMETER nova_energy		REAL	1.0e51
+PARAMETER nova_yield		REAL	0.1
+PARAMETER nova_temp		REAL	1.0e4
+PARAMETER nova_particles	REAL	1.0e7
+PARAMETER zoom_level_offset	INTEGER	2
+
+## overdensity refinement
+PARAMETER useOverdensity	BOOLEAN	false
+PARAMETER useUnderdensity	BOOLEAN	false
+PARAMETER refine_level_offset	REAL	-4.0
+PARAMETER phi			REAL	-0.3
+
+

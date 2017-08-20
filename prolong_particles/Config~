@@ -1,0 +1,20 @@
+
+#REQUIRES physics/Gravity/GravityMain/Poisson/Multigrid/ProlongParticles
+#REQUIRES physics/Gravity/GravityMain/Poisson/ProlongParticles
+
+PARAMETER SmoothParticles       BOOLEAN FALSE
+PARAMETER lrefine_smooth_max    INTEGER 1
+PARAMETER lrefine_smooth_min    INTEGER 1
+PARAMETER max_num_smooth_part   INTEGER 10000
+PARAMETER smooth_radius_factor  REAL 0.3
+
+VARIABLE  pde
+VARIABLE  aux
+#VARIABLE  gpdm
+
+PARTICLEPROP  smoothtag    REAL
+PARTICLEPROP  mass_save    REAL
+PARTICLEPROP  grid_dens    REAL
+
+
+
