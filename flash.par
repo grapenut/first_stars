@@ -1,0 +1,58 @@
+# Hydro ---------------------------------------------------
+useHydro			= .true.
+updateHydroFluxes		= .true.
+ppm_modifystates		= .false.
+use_auxEintEqn			= .false.
+
+eintSwitch			= 1.0e-4 #0.0		#1.e100 # Always use Etot
+gamma				= 1.66666666667
+cfl				= 0.8		# 0.8
+cvisc				= 0.1		# coefficient for artificial viscosity
+nriem				= 25		# 10
+
+small				= 1.0E-40
+smlrho				= 1.0E-40
+smallp				= 1.0E-40
+smalle				= 1.E8
+smallt				= 1.
+smallu				= 1.0E-40
+smallx				= 1.0E-40
+
+##  SWITCHES SPECIFIC TO THE UNSPLIT HYDRO SOLVER               ##
+#interpol_order			= 2
+order				= 3		# 3rd PPM
+slopeLimiter			= "mc"		# Slope limiters (minmod, mc, vanLeer, hybrid, limited)
+LimitedSlopeBeta		= 1.		# Slope parameter for the "limited" slope by Toro
+charLimiting			= .true.	# Characteristic limiting vs.Primitive limiting
+
+use_avisc			= .true.	# use artificial viscosity (originally for PPM)
+use_flattening			= .false.	# use flattening (dissipative) (originally for PPM)
+use_steepening			= .false.	# use contact steepening (originally for PPM)
+use_upwindTVD			= .false.	# use upwind biased TVD slope for PPM (need nguard=6)
+
+flux_correct			= .true.
+shockDetect			= .false.
+shockLowerCFL			= .false.
+
+#       II. RIEMANN SOLVERS: 
+RiemannSolver			= "HLLC"       # Roe, HLL, HLLC, LLF, Marquina
+entropy				= .false.
+
+use_gravHalfUpdate		= .true.
+
+#convertToConsvdInMeshInterp	= .false.
+
+
+# apply gr_smalle and don't print anything
+#enableMaskedGCFill		= .true.
+gr_sanitizeDataMode		= 3
+gr_sanitizeVerbosity		= 0
+
+
+
+
+
+
+
+
+
